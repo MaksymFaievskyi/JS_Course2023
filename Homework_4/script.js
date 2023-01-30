@@ -37,75 +37,41 @@ checkAge();
 //3 task
 class MonthException{
     constructor(message){
-        this.name = "MonthException"
-        this.message = message;
+        this._name = "MonthException";
+        this._message = message;
     }
-    name(){
-        return this.name;
+    get name(){
+        return this._name;
     }
-    message(){
-        return this.message;
+    get message(){
+        return this._message;
     }
 }
 
-function showMonthName(month) {
+function showMonthName(monthNum) {
     try {
-        if(!Number.isInteger(+month) || typeof month == "boolean" || typeof month == "object") {
+        if(!Number.isInteger(+monthNum) || typeof monthNum == "boolean" || typeof monthNum == "object") {
             throw new MonthException("Incorrect month number. You entered not a integer number");
         }
-        if(month > 12) {
+        if(monthNum > 12) {
             throw new MonthException("Incorrect month number. You entered number that more than 12");
         }
-        if(month <= 0) {
-            throw new MonthException("Incorrect month number. You entered number that less than 0");
+        if(monthNum <= 0) {
+            throw new MonthException("Incorrect month number. You entered number that less than 1");
         }
-        switch (month) {
-            case 1:
-                return "January";
-                break;
-            case 2:
-                return "February";
-                break;
-            case 3:
-                return "March";
-                break;
-            case 4:
-                return "April";
-                break;
-            case 5:
-                return "May";
-                break;
-            case 6:
-                return "June";
-                break;  
-            case 7:
-                return "July";
-                break;
-            case 8:
-                return "August";
-                break;
-            case 9:
-                return "September";
-                break;
-            case 10:
-                return "October";
-                break;
-            case 11:
-                return "November";
-                break;
-            case 12:
-                return "December";
-                break;        
-            default:
-                throw new MonthException("Oops. Something went wrong");
-        }
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+        return monthNames[monthNum - 1];
     }
     catch(MonthException){
         return MonthException.name + "\n" + MonthException.message;
     }
 }
+console.log(showMonthName(-8)); 
 console.log(showMonthName(5)); 
-console.log(showMonthName(14)); 
+console.log(showMonthName(13));
+console.log(showMonthName(11.1)); 
+console.log(showMonthName(true)); 
 
 //4 task
 function showUser(id) {
