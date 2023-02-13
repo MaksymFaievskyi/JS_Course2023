@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS_Homework7</title>
+    </head>
+    <body>
+        <!-- 2 task -->
+        <p id ='text'>I learning JavaScript events!</p> 
+        <div>
+            <button type="button" value="Button" id="elem" >Change style!</button>
+        </div>
+
+        <!-- 3 task -->
+        <button type="button" class="changeColor" onclick = "clickElem()">Click to make the page blue.</button>
+        <button type="button" class="changeColor" ondblclick = "dlclickElem()">Double-click to make the page pink.</button>
+        <button type="button" class="changeColor" onmousedown = "mousedownElem()" onmouseup = "mouseupElem()">Click and hold to make the page brown.</button>
+        <a href="#" class="changeColor" onmouseover = "mouseoverElem()" onmouseout = "mouseoutElem()">Hover over to make the page yellow.</a>
+
+        <!-- 4 task -->
+        <select name="name" id="peopleName" >
+            <option value="ger">Peter</option>
+            <option value="usa">John</option>
+            <option value="ukr">Alise</option>
+            <option value="ukr">Alex</option>
+            <option value="ukr">Iren</option>
+        </select>
+        <button type="button" onclick = "deleteElem()">Choose and Delete</button>
+
+        <!-- 5 task -->
+        <div id="div">
+            <button type="button" id="liveButton" style="display: block;">Live Button</button>
+        </div>
+
+        <!-- 6 task -->
+        <p>
+            Width: <span id="width"></span>, Height: <span id="height"></span>
+        </p>
+
+        <!-- 7 task -->
+        <select name="country" id="country">
+            <option value="ger">Germany</option>
+            <option value="usa">USA</option>
+            <option value="ukr">Ukraine</option>
+        </select>
+                            
+        <select name="cities" id="cities"></select>
+        <p></p>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
