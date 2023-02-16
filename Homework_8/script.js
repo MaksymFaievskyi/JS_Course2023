@@ -20,13 +20,8 @@ checkEmail("Qmail2@gmail.com");
 
 //3 task
 const str = "cdfDbbBBbdsbz";
-const arrResult = [];
-let epxDbd = str.match(/db+d/i);
-if(epxDbd){
-    arrResult.push(epxDbd[0])
-    arrResult.push((epxDbd[0].match(/b+/i))[0]);
-    arrResult.push((epxDbd[0].match(/d$/i))[0]);
-}
+let regExp = /d(b+)(d)/i;
+const arrResult = regExp.exec(str);
 console.log(arrResult);
 
 //4 task
