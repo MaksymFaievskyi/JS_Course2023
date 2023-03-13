@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //7 TASK
+    let url = new URL(location.href);
+    let json = url.searchParams.get(`data`);
+    let post = JSON.parse(json);
+    console.log(post); 
+
+    let postBlocks = document.createElement('div');
+    let head = document.createElement('h2');
+    head.innerText = post.title;
+    let p = document.createElement('p');
+    p.innerText = `UserID: ${post.userId}
+    ID: ${post.id}
+    Post data: ${post.body}`;
+    p.classList.add('xxx');
+    postBlocks.append(head ,p);
+    document.body.appendChild(postBlocks);
+
+    //8 TASK
+    let url1 = new URL(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`);
+    document.body.insertAdjacentHTML("beforeend",
+    `
+    <h2>Comments of current post</h2>
+    `)
+    fetch(url1)
+        .then(value => value.json())
+        .then(comments => {
+            for (const comment of comments) {
+                document.body.insertAdjacentHTML("beforeend",
+            `
+            <div>
+                <h3>Post name: ${comment.name}</h3>
+                <p>Post ID: ${comment.postId}</p>
+                <p>ID: ${comment.id}</p>
+                <p>Email: ${comment.email}</p>
+                <p>Content: ${comment.body}</p>
+            </div>
+            `
+            )
+            }
+        });
+</script>
+</body>
+<p></p>
+</html>

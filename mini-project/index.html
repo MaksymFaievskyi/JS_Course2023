@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+    
+<script>
+  let url = new URL(`https://jsonplaceholder.typicode.com/users`);
+  fetch(url)
+          .then(value => value.json())
+          .then(users => {
+            for (const user of users) {
+              let div = document.createElement(`div`);
+              let a = document.createElement(`a`);
+              a.innerText = `${user.id} ${user.name}`;
+              a.href = `user-details.html?data=` + JSON.stringify(user);
+              div.appendChild(a,);
+              document.body.appendChild(div);
+            }
+          });
+</script>
+</body>
+</html>

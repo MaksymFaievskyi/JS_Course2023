@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<style>
+    .xxx{
+        color: blue;
+        font-family: Cambria;
+    }
+</style>
+
+<script>
+    let url = new URL(location.href);
+    let json = url.searchParams.get(`data`);
+    let user = JSON.parse(json);
+    console.log(user);
+
+    let userBlocks = document.createElement('div');
+    let head = document.createElement('h2');
+    head.innerText = user.name;
+    let p = document.createElement('p');
+    p.innerText = `Username: ${user.username}
+    Email: ${user.email},
+    street: ${user.address.street},
+    suite: ${user.address.suite},
+    city: ${user.address.city},
+    zipcode: ${user.address.zipcode},
+    geo lat: ${user.address.geo.lat},
+    geo lng: ${user.address.geo.lng},
+    phone: ${user.phone},
+    website: ${user.website},
+    company name: ${user.company.name},
+    company catchPhrase: ${user.company.catchPhrase},
+    company bs: ${user.company.bs}`;
+    p.classList.add('xxx');
+    userBlocks.append(head ,p);
+    document.body.appendChild(userBlocks);
+
+    function displayPosts(){
+        let url1 = new URL(`https://jsonplaceholder.typicode.com/users/${user.id}/posts`);
+        fetch(url1)
+            .then(value => value.json())
+            .then(posts => {
+                for (const post of posts) {
+                    let block = document.createElement(`div`);
+                    let a = document.createElement(`a`);
+                    a.innerText =` ${post.id},${post.title}`;
+                    a.href = `post-details.html?data=` + JSON.stringify(post);
+                        block.appendChild(a);
+                        document.body.appendChild(block);
+                    }
+            });
+    }
+</script>
+<button onClick="displayPosts()">Post of current user</button>
+</body>
+</html>
